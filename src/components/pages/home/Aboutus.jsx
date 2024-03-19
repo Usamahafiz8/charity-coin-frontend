@@ -1,5 +1,7 @@
-import { Grid, Typography } from "@mui/material";
+import { Button, Grid, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
+
+import logoSVG from "./../../../assets/solana-coin.svg"; 
 
 const Aboutus = () => {
   const [index, setIndex] = useState(0);
@@ -28,8 +30,8 @@ const Aboutus = () => {
       <Typography
         style={{
           position: "absolute", // Positions the text absolutely within the container
-          top: 0, // Adjust top position if necessary
-          left: 0, // Adjust left position if necessary
+          top: 50, // Adjust top position if necessary
+          left: 50, // Adjust left position if necessary
           opacity: 1, // Set opacity to keep it visible
           zIndex: 1, // Ensure it's on top of other text
         }}
@@ -44,8 +46,8 @@ const Aboutus = () => {
           key={idx}
           style={{
             position: "absolute", // Positions each text absolutely within the container
-            top: 0, // Adjust top position if necessary
-            left: 400, // Adjust left position if necessary
+            top: 50, // Adjust top position if necessary
+            left: 450, // Adjust left position if necessary
             opacity: idx === index - 1 ? 1 : 0, // Set opacity based on active index
             transition: "opacity 0.3s ease", // Apply transition effect
           }}
@@ -71,8 +73,14 @@ const Aboutus = () => {
           md={6}
           sm={12}
           sx={12}
-          style={{ padding: "16px" }}
-        ></Grid>
+          style={{ textAlign:"center" }}
+        >
+                    <img
+            src={logoSVG}
+            alt="Logo"
+            style={{ width: "300px", height: "300px" }}
+          />
+        </Grid>
         <Grid
           item
           xl={6}
@@ -83,7 +91,7 @@ const Aboutus = () => {
           style={{ padding: "16px" }}
         >
           <Typography variant="h2">About Carity Coins</Typography>
-          <Typography mt={3}>
+          <Typography mt={3} mb={3}>
             Lorem Ipsum is simply dummy text of the printing and typesetting
             industry. Lorem Ipsum has been the industry's standard dummy text
             ever since the 1500s, when an unknown printer took a galley of type
@@ -94,6 +102,9 @@ const Aboutus = () => {
             and more recently with desktop publishing software like Aldus
             PageMaker including versions of Lorem Ipsum.
           </Typography>
+          <button class="button-17" role="button">
+          Let’s Donate
+        </button>
         </Grid>
       </Grid>
     </div>

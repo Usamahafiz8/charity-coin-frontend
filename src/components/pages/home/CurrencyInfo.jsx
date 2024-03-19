@@ -1,84 +1,62 @@
+// const apiKey = "6a8243da-dfda-41db-a53f-464cf13a68dc";
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 
 const CurrencyInfo = () => {
-  const [solanaCoins, setSolanaCoins] = useState([]);
-  const [trendingCoins, setTrendingCoins] = useState([]);
+  const [solanaData, setSolanaData] = useState(null);
 
   useEffect(() => {
-    const fetchSolanaCoins = async () => {
+    const fetchSolanaData = async () => {
       try {
-        const response = await axios.get(
-          "https://api.coingecko.com/api/v3/search?query=solana"
+        const apiKey = "6a8243da-dfda-41db-a53f-464cf13a68dc"; // Replace with your CoinMarketCap API key
+        const headers = {
+          'x-api-key': apiKey
+        };
+
+        const response = await fetch(
+          "https://api.coinmarketcap.com/data-api/v3/cryptocurrency/listing?start=1&limit=100&sortBy=market_cap&sortType=desc&convert=USD&cryptoType=all&tagType=all&audited=false",
+          { headers }
         );
-        const data = response.data.coins;
-        setSolanaCoins(data);
+        const data = await response.json();
+
+        // Find Solana data
+        const solana = data.data.cryptoCurrencyList.find(
+          (coin) => coin.symbol === "SOL"
+        );
+
+        if (solana) {
+          setSolanaData(solana);
+        } else {
+          console.log("Solana data not found.");
+        }
       } catch (error) {
-        console.error("Error fetching Solana coins:", error);
+        console.error("Error fetching Solana data:", error);
       }
     };
 
-    const fetchTrendingCoins = async () => {
-      try {
-        const response = await axios.get(
-          "https://api.coingecko.com/api/v3/search/trending"
-        );
-        const data = response.data.coins;
-        setTrendingCoins(data);
-      } catch (error) {
-        console.error("Error fetching trending coins:", error);
-      }
-    };
-
-    fetchSolanaCoins();
-    fetchTrendingCoins();
+    fetchSolanaData();
   }, []);
 
   return (
-    <div>
-      <h1>Top Coins on Solana Blockchain</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Symbol</th>
-            <th>Name</th>
-            <th>Thumbnail</th>
-          </tr>
-        </thead>
-        <tbody>
-          {solanaCoins.map((coin, index) => (
-            <tr key={index}>
-              <td>{coin.id}</td>
-              <td>{coin.symbol}</td>
-              <td>{coin.name}</td>
-              <td>
-                <img src={coin.thumb} alt={coin.name} style={{ width: "50px", height: "50px" }} />
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-
-      <h1>Trending Coins</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Symbol</th>
-            <th>Price (USD)</th>
-          </tr>
-        </thead>
-        <tbody>
-          {trendingCoins.map((coin, index) => (
-            <tr key={index}>
-              <td>{coin.item.name}</td>
-              <td>{coin.item.symbol}</td>
-              <td>{coin.item.data.price}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "#FFF5E4",
+        color: "black",
+      }}
+    >
+      <h1>Solana Information</h1>
+      {solanaData && (
+        <div>
+          <p>Name: {solanaData.name}</p>
+          <p>Symbol: {solanaData.symbol}</p>
+          <p>Market Cap: {solanaData.quotes.USD.marketCap}</p>
+          <p>Price: {solanaData.quotes.USD.price}</p>
+          {/* Add more details as needed */}
+        </div>
+      )}
     </div>
   );
 };
