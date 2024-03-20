@@ -31,8 +31,8 @@ const Main = () => {
             gap:"16px"
           }}
         >
-          <Typography variant="h3">Philanthropy: On-Chain</Typography>
-          <Typography variant="p">
+          <Typography variant="h2">Philanthropy: On-Chain</Typography>
+          <Typography variant="h6">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec
             odio eget velit convallis scelerisque. Fusce auctor semper lectus
             vel efficitur. Donec eleifend, eros id malesuada tristique, magna

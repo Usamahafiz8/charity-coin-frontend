@@ -18,7 +18,6 @@ const Aboutus = () => {
     <div
       style={{
         height: "100vh",
-        backgroundColor: "white",
         padding: "20px 40px ",
         position: "relative",
         display: "flex",

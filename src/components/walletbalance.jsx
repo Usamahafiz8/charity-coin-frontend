@@ -1,178 +1,107 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-const SolanaWalletBalance = ({ walletAddress }) => {
-  const [totalBalance, setTotalBalance] = useState(0);
-  const [assetAllocation, setAssetAllocation] = useState({});
+const WalletDetails = () => {
+  const [walletDetails, setWalletDetails] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const getSolanaBalance = async () => {
+    const fetchWalletDetails = async () => {
+      const walletAddress = 'JTJ9Cz7i43DBeps5PZdX1QVKbEkbWegBzKPxhWgkAf1';
+      const heliusAPIKey = 'e8361445-1bc5-46c6-8851-c6e9810e7792';
+
       try {
-        const walletResponse = await getSolanaWalletBalance(walletAddress);
-        if (!walletResponse || "error" in walletResponse) {
-          return;
-        }
-
-        const { tokenInfo, nativeInfo } = getSolanaWalletInfo(walletResponse);
-
-        const newAssetAllocation = {};
-        let newTotalBalance = 0;
-
-        if (nativeInfo) {
-          newAssetAllocation["SOL"] = {
-            amount: nativeInfo["Solana"]?.amount || 0,
-            balance: nativeInfo["Solana"]?.balance || 0,
-          };
-          newTotalBalance += nativeInfo["Solana"]?.balance || 0;
-        }
-
-        for (const token of tokenInfo) {
-          const { id, symbol, balance, decimals } = token;
-
-          const priceUsd = await getSolanaTokenPriceUsd(id);
-          if (priceUsd === null) {
-            continue;
+        const response = await axios.post(
+          'https://devnet.helius-rpc.com/',
+          {
+            jsonrpc: '2.0',
+            id: 'my-id',
+            method: 'getAssetsByOwner',
+            params: {
+              ownerAddress: walletAddress,
+              page: 1,
+              limit: 1000,
+              displayOptions: {
+                showFungible: true,
+                showNativeBalance: true,
+              },
+            },
+          },
+          {
+            headers: {
+              'Content-Type': 'application/json',
+              'x-api-key': heliusAPIKey,
+            },
           }
+        );
 
-          const adjustedBalance = balance / 10 ** decimals;
-          const usdBalance = adjustedBalance * priceUsd;
-
-          if (usdBalance < 0.01) {
-            continue;
-          }
-
-          newTotalBalance += usdBalance;
-          newAssetAllocation[symbol] = {
-            amount: adjustedBalance,
-            balance: usdBalance,
-          };
-        }
-
-        setTotalBalance(newTotalBalance);
-        setAssetAllocation(newAssetAllocation);
+        const walletData = response.data.result;
+        setWalletDetails(walletData);
+        console.log('============================');
+        console.log(walletData);
+        console.log('============================');
       } catch (error) {
-        console.error("Error fetching Solana balance:", error);
+        setError(error.message);
       }
     };
 
-    getSolanaBalance();
-  }, [walletAddress]);
+    fetchWalletDetails();
+  }, []);
 
-  const getSolanaWalletBalance = async (walletAddress) => {
-    const url = 
-    // `https://mainnet.helius-rpc.com/?api-key=e8361445-1bc5-46c6-8851-c6e9810e7792`;
-    `https://devnet.helius-rpc.com/?api-key=e8361445-1bc5-46c6-8851-c6e9810e7792`
-    // https://mainnet.helius-rpc.com/?api-key=${process.env.REACT_APP_HELIOUS_API_KEY}
-
-    const payload = {
-      jsonrpc: "2.0",
-      id: "my-id",
-      method: "getAssetsByOwner",
-      params: {
-        ownerAddress: walletAddress,
-        page: 1,
-        limit: 1000,
-        displayOptions: {
-          showFungible: true,
-          showNativeBalance: true,
-        },
-      },
-    };
-
-    const headers = {
-      "Content-Type": "application/json",
-    };
-
-    try {
-      const response = await axios.post(url, payload, { headers });
-      return response.data;
-    } catch (error) {
-      console.error("Error fetching Solana wallet balance:", error);
-      return null;
-    }
+  // Function to filter tokens with balance greater than 0
+  const filterTokens = (tokens) => {
+    return tokens.filter((token) => token.token_info && token.token_info.balance > 0);
   };
 
-  const getSolanaWalletInfo = (response) => {
-    try {
-      if (!response || !response.result || !response.result.items) {
-        return { tokenInfo: [], nativeInfo: null };
-      }
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
-      const extractedInfo = response.result.items.map((item) => {
-        const tokenData = {
-          id: item.id || "",
-          name: item.content?.metadata?.name || "",
-          symbol: item.content?.metadata?.symbol || "",
-          balance: item.token_info?.balance || 0,
-          decimals: item.token_info?.decimals || 0,
-        };
-        return tokenData;
-      });
+  if (!walletDetails) {
+    return <div>Loading...</div>;
+  }
 
-      const nativeBalance = {};
-      if ("nativeBalance" in response.result) {
-        const data = response.result.nativeBalance;
-        const amount = parseFloat(data.lamports || 0) / 10 ** 9;
-        nativeBalance["Solana"] = {
-          amount: amount,
-          balance: data.total_price || 0,
-        };
-      }
-
-      return { tokenInfo: extractedInfo, nativeInfo: nativeBalance };
-    } catch (error) {
-      console.error("Error extracting token information:", error);
-      return { tokenInfo: [], nativeInfo: null };
-    }
-  };
-
-  const getSolanaTokenPriceUsd = async (contractAddress) => {
-    const url = `https://api.geckoterminal.com/api/v2/simple/networks/solana/token_price/${contractAddress}`;
-
-    try {
-      const response = await axios.get(url, {
-        headers: { accept: "application/json" },
-      });
-      const data = response.data;
-      const tokenPrices = data?.data?.attributes?.token_prices || {};
-      return parseFloat(tokenPrices[contractAddress] || 0);
-    } catch (error) {
-      console.error("Error fetching Solana token price:", error);
-      return null;
-    }
-  };
+  // Filter tokens with balance greater than 0
+  const filteredTokens = filterTokens(walletDetails.items);
 
   return (
     <div>
-      <h1>Solana Wallet Balance</h1>
-      <p>Total Balance: ${totalBalance.toFixed(2)}</p>
+      <h1>Wallet Details</h1>
+      <p>Total Balance (SOL): {walletDetails.nativeBalance.total_price}</p>
+      <h2>Token Details:</h2>
       <table>
         <thead>
           <tr>
-            <th>Token</th>
-            <th>Amount</th>
-            <th>Balance (USD)</th>
+            <th>Logo</th>
+            <th>Name</th>
+            <th>Balance</th>
+            <th>Symbol</th>
+
+            <th>Contract Address</th>
           </tr>
         </thead>
         <tbody>
-          {Object.entries(assetAllocation).map(
-            ([token, { amount, balance }], index) => (
-              <tr key={index}>
-                <td>{token}</td>
-                <td>{amount}</td>
-                <td>{balance.toFixed(2)}</td>
-              </tr>
-            )
-          )}
+          {filteredTokens.map((token, index) => (
+            <tr key={index}>
+              <td>
+                {token.content.metadata && (
+                  <img src={`${token.content.links.image}`} alt={`${token.content.metadata.name} Logo`} style={{ width: '50px', height: '50px', borderRadius:"10px" }} />
+                )}
+                {/* ,{token.content.links.image} */}
+              </td>
+              <td>{token.content.metadata.name}</td>
+              <td>{token.token_info.balance}</td>
+              <td>{token.token_info.symbol}</td>
+              <td>{token.id}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
   );
 };
 
-export default SolanaWalletBalance;
-
-
+export default WalletDetails;
 
 
 

@@ -1,48 +1,122 @@
 import React from "react";
 import Divider from "@mui/material/Divider";
-import { Typography, Container, Link, Grid, Box } from "@mui/material";
+import { Typography, Grid, Box } from "@mui/material";
+import logoSVG from "./../../assets/logo.svg";
+import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import InputBase from "@mui/material/InputBase";
+import IconButton from "@mui/material/IconButton";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import XIcon from "@mui/icons-material/X";
+import EmailIcon from "@mui/icons-material/Email";
+import InstagramIcon from "@mui/icons-material/Instagram";
+
+import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
+
+  const renderLogoAndText = () => (
+    <Grid
+      item
+      xl={6}
+      lg={6}
+      md={6}
+      sm={12}
+      xs={12}
+      style={{
+        padding: "20px",
+        display: "flex",
+        flexDirection: "column",
+        gap: "32px",
+      }}
+    >
+      <img src={logoSVG} alt="Logo" style={{ width: "50px", height: "50px" }} />
+      <Typography variant="h5" style={{ width: "70%" }}>
+        Don’t miss out on our updates! Subscribe to our newsletter
+      </Typography>
+
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          maxWidth: "300px",
+          borderBottom: "1px solid black",
+        }}
+      >
+        <InputBase
+          sx={{ ml: 1, flex: 1 }}
+          placeholder="Email Address"
+          inputProps={{ "aria-label": "Email Address" }}
+        />
+
+        <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+        <NavigateNextIcon />
+      </div>
+      <div style={{ marginTop: "80px", display: "flex", gap: "8px" }}>
+        <IconButton sx={{ backgroundColor: "black", color: "white" }}>
+          <FacebookOutlinedIcon />
+        </IconButton>
+        <IconButton sx={{ backgroundColor: "black", color: "white" }}>
+          <GitHubIcon />
+        </IconButton>
+        <IconButton sx={{ backgroundColor: "black", color: "white" }}>
+          <XIcon />
+        </IconButton>
+        <IconButton sx={{ backgroundColor: "black", color: "white" }}>
+          <InstagramIcon />
+        </IconButton>
+        <IconButton sx={{ backgroundColor: "black", color: "white" }}>
+          <EmailIcon />
+        </IconButton>
+      </div>
+    </Grid>
+  );
+
   return (
     <Box
       sx={{
         display: "flex",
         flexDirection: "column",
-        justifyContent: "center",
-        // height:"100vh"
+        backgroundColor: "#FFF5E4",
       }}
     >
       <Divider />
       <Grid container justifyContent={"center"}>
-        <Grid item xl={5.9} lg={5.9} md={5.9} sm={12} xs={12} style={{ padding:"8px"}}>
-          <div>logo aera</div>
-          <div>conten and email</div>
-          <div>Social media</div>
-        </Grid>
+        {renderLogoAndText()}
         <Divider orientation="vertical" flexItem />
         <Divider orientation="vertical" variant="middle" flexItem />
-        <Grid item xl={5.9} lg={5.9} md={5.9} sm={12} xs={12} style={{textAlign:"right", padding:"8px"}}>
-          <div>Social media</div>
-          
+        <Grid
+          item
+          xl={5.9}
+          lg={5.9}
+          md={5.9}
+          sm={12}
+          xs={12}
+          style={{ display: "flex", flexDirection: "row", alignItems:"center", justifyContent:"space-around", width:"300px" }}
+        >
+          <div></div>
+          <div>
+            <Typography>
+              <b>Menu</b>
+            </Typography>
+            <Typography>Strategies</Typography>
+            <Typography>Docs</Typography>
+            <Typography>Careers</Typography>
+
+            <Typography>Vesting</Typography>
+            <Typography>Privacy Policy</Typography>
+            <Typography>Cookies Policy</Typography>
+            <Typography>Contact</Typography>
+          </div>
         </Grid>
       </Grid>
 
       <Divider />
-      <div
-        style={{
-          display: "flex",
-          padding: "20px 40px",
-          alignItems: "center",
-          justifyContent: "space-between",
-        }}
-      >
-        <Container maxWidth="sm">
-          <Typography variant="body1" align="center">
-            &copy; {currentYear} Charity Coin. All rights reserved.
-          </Typography>
-        </Container>
-      </div>
+      <Box style={{ display: "flex", padding: "20px " }}>
+        <Typography variant="body1" align="left">
+          &copy; {currentYear} Charity Coin. All rights reserved.
+        </Typography>
+      </Box>
     </Box>
   );
 };
