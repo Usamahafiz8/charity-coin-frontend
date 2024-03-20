@@ -3,6 +3,7 @@ import { Layout } from "../components/layout";
 import Main from "../components/pages/home/Main";
 import Aboutus from "../components/pages/home/Aboutus";
 import CurrencyInfo from "../components/pages/home/CurrencyInfo";
+import SolanaWalletBalance from "../components/walletbalance";
 // import CustomTable from "../components/CurrencyTable/CustomTable";
 
 export const Home = () => {
@@ -35,12 +36,15 @@ export const Home = () => {
 			{ value: "C3", width: "25%" }
 		]
 	];
+    const randomWalletAddress = 'JTJ9Cz7i43DBeps5PZdX1QVKbEkbWegBzKPxhWgkAf1';
+
   return (
     <>
       <Layout>
         <Main />
         <Aboutus />
         {/* <CustomTable headerData={headerData} data={tableData} /> */}
+        <SolanaWalletBalance walletAddress={randomWalletAddress }/>
         <CurrencyInfo />
       </Layout>
     </>

@@ -1,62 +1,63 @@
-// const apiKey = "6a8243da-dfda-41db-a53f-464cf13a68dc";
 import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { Token } from "../../content/tokenDetails";
 
-const CurrencyInfo = () => {
-  const [solanaData, setSolanaData] = useState(null);
+const TokenInfo = ({ token }) => {
+  const [tokenDetails, setTokenDetails] = useState(null);
 
   useEffect(() => {
-    const fetchSolanaData = async () => {
+    const fetchTokenDetails = async () => {
       try {
-        const apiKey = "6a8243da-dfda-41db-a53f-464cf13a68dc"; // Replace with your CoinMarketCap API key
-        const headers = {
-          'x-api-key': apiKey
-        };
-
-        const response = await fetch(
-          "https://api.coinmarketcap.com/data-api/v3/cryptocurrency/listing?start=1&limit=100&sortBy=market_cap&sortType=desc&convert=USD&cryptoType=all&tagType=all&audited=false",
-          { headers }
+        const response = await axios.get(
+          `https://api.geckoterminal.com/api/v2/networks/solana/tokens/multi/${token.address}`
         );
-        const data = await response.json();
-
-        // Find Solana data
-        const solana = data.data.cryptoCurrencyList.find(
-          (coin) => coin.symbol === "SOL"
-        );
-
-        if (solana) {
-          setSolanaData(solana);
-        } else {
-          console.log("Solana data not found.");
-        }
+        const data = response.data.data[0];
+        setTokenDetails(data);
       } catch (error) {
-        console.error("Error fetching Solana data:", error);
+        console.error(`Error fetching ${token.name} details:`, error);
       }
     };
 
-    fetchSolanaData();
-  }, []);
+    fetchTokenDetails();
+  }, [token]);
+
+  return tokenDetails ? (
+    <tr>
+      <td>
+        <img src={tokenDetails.attributes.image_url} alt={`${tokenDetails.attributes.name} Logo`} style={{ width: "50px", height: "50px" }} />
+      </td>
+      <td>{tokenDetails.attributes.name}</td>
+      <td>{tokenDetails.attributes.symbol}</td>
+      <td>{tokenDetails.attributes.total_supply}</td>
+      <td>{tokenDetails.attributes.price_usd}</td>
+      <td>{tokenDetails.attributes.market_cap_usd}</td>
+    </tr>
+  ) : null;
+};
+
+const CurrencyInfo = () => {
+  
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundColor: "#FFF5E4",
-        color: "black",
-      }}
-    >
-      <h1>Solana Information</h1>
-      {solanaData && (
-        <div>
-          <p>Name: {solanaData.name}</p>
-          <p>Symbol: {solanaData.symbol}</p>
-          <p>Market Cap: {solanaData.quotes.USD.marketCap}</p>
-          <p>Price: {solanaData.quotes.USD.price}</p>
-          {/* Add more details as needed */}
-        </div>
-      )}
+    <div style={{display:"flex", justifyContent:'center', flexDirection:"column", color:"black", backgroundColor:"white"}}>
+      <h1>Top Solana Tokens</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Logo</th>
+            <th>Name</th>
+            <th>Symbol</th>
+            <th>Total Supply</th>
+            <th>Price (USD)</th>
+            <th>Market Cap (USD)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {Token.map((token, index) => (
+            <TokenInfo key={index} token={token} />
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
