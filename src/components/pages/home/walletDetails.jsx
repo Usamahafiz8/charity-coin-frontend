@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Heading500 from "../../headings/heading500";
 import axios from "axios";
 import TokenInfo from "./TokenInfo";
+import Heading700 from "../../headings/heading700";
 
 const WalletDetail = ({ name }) => {
   const [walletDetails, setWalletDetails] = useState(null);
@@ -68,13 +69,15 @@ const WalletDetail = ({ name }) => {
 
   // Filter tokens with balance greater than 0
   const filteredTokens = walletDetails
-  ? walletDetails.items.filter(
-      (token) =>
-        token.token_info &&
-        token.token_info.balance > 0 &&
-        token.content.metadata
-    ).slice(0, 8)
-  : [];
+    ? walletDetails.items
+        .filter(
+          (token) =>
+            token.token_info &&
+            token.token_info.balance > 0 &&
+            token.content.metadata
+        )
+        .slice(0, 8)
+    : [];
 
   return (
     <Box
@@ -83,8 +86,15 @@ const WalletDetail = ({ name }) => {
         flexDirection: "column",
         padding: "20px",
         justifyContent: "center",
+        backgroundColor: "#A0F8F8",
+        marginBottom: "56px",
       }}
     >
+      <div style={{ textAlign: "center", marginBottom: "48px" }}>
+        <Heading700 styles={{ fontSize: "80px" }}>
+          Total Donation Pool Value:
+        </Heading700>
+      </div>
       <Grid
         container
         sx={{
@@ -100,7 +110,7 @@ const WalletDetail = ({ name }) => {
           <Heading500>Underlying Asset</Heading500>
         </Grid>
         <Grid item xl={2} lg={2} md={2} sm={12} xs={12}>
-          <Heading500>Chain</Heading500>
+          <Heading500>-----</Heading500>
         </Grid>
         <Grid item xl={2} lg={2} md={2} sm={12} xs={12}>
           <Heading500>Token Amount</Heading500>
@@ -154,8 +164,10 @@ const WalletDetail = ({ name }) => {
           </Grid>
           <Grid item xl={2} lg={2} md={2} sm={12} xs={12}>
             {/* {token.token_info.symbol} : */}
-             
-            <Heading500>Solana</Heading500>
+
+            <Heading500>
+              {token.strategy ? token.strategy : "No Strategy"}
+            </Heading500>
           </Grid>
           <Grid item xl={2} lg={2} md={2} sm={12} xs={12}>
             <Heading500>{token.token_info.balance}</Heading500>
@@ -170,7 +182,7 @@ const WalletDetail = ({ name }) => {
             </Heading500>
           </Grid>
           <Grid item xl={2} lg={2} md={2} sm={12} xs={12}>
-            <TokenInfo address={token.id} name={token.content.metadata.name}/>
+            <TokenInfo address={token.id} name={token.content.metadata.name} />
             {/* {token.id} */}
             {/* <Heading500>{token.id}</Heading500> */}
           </Grid>

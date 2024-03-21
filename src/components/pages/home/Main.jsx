@@ -1,6 +1,9 @@
 import { Button, Grid, Typography } from "@mui/material";
 import React from "react";
 import logoSVG from "./../../../assets/solana.svg"; // Import your SVG file
+import Heading700 from "../../headings/heading700";
+import Heading500 from "../../headings/heading500";
+import Heading400 from "../../headings/heading400";
 
 const Main = () => {
   return (
@@ -28,19 +31,22 @@ const Main = () => {
             flexDirection: "column",
             justifyContent: "center",
             padding: "40px",
-            gap:"16px"
+            gap: "16px",
           }}
         >
-          <Typography variant="h2">Philanthropy: On-Chain</Typography>
-          <Typography variant="h6">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec
-            odio eget velit convallis scelerisque. Fusce auctor semper lectus
-            vel efficitur. Donec eleifend, eros id malesuada tristique, magna
-            purus consectetur libero, id commodo nisi mauris vel dolor. Integer
-            auctor sagittis lacus, a pretium odio condimentum eu. Sed id
-            ullamcorper nunc. Vestibulum condimentum justo vitae urna facilisis,
-            vel ultricies odio fermentum.
-          </Typography>
+          <div style={{ display: "flex", gap: "16px" }}>
+            <Heading700 styles={{ color: "#ffffff" }}>
+              Philanthropy :{" "}
+            </Heading700>
+            <Heading700 styles={{ color: "#03EEEF" }}> On-Chain</Heading700>
+          </div>
+
+          <Heading400 styles={{ color: "#ffffff" }}>
+            CharityCoin harnesses blockchain technology to redefine charitable
+            giving. By leveraging the Solana network, we offer a transparent and
+            efficient platform for collective philanthropy, ensuring every
+            donation makes a meaningful impact towards a better world.
+          </Heading400>
         </Grid>
         <Grid
           item
@@ -59,7 +65,7 @@ const Main = () => {
           <img
             src={logoSVG}
             alt="Logo"
-            style={{ width: "450px", height: "450px" }}
+            style={{ width: "35em", height: "35em" }}
           />
         </Grid>
       </Grid>

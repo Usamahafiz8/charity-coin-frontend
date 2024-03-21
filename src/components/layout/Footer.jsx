@@ -27,11 +27,11 @@ export const Footer = () => {
         padding: "20px",
         display: "flex",
         flexDirection: "column",
-        gap: "32px",
+        gap: "36px",
       }}
     >
-      <img src={logoSVG} alt="Logo" style={{ width: "50px", height: "50px" }} />
-      <Typography variant="h5" style={{ width: "70%" }}>
+      <img src={logoSVG} alt="Logo" style={{ width: "80px", height: "80px" }} />
+      <Typography variant="h5" style={{ width: "320px" }}>
         Don’t miss out on our updates! Subscribe to our newsletter
       </Typography>
 
@@ -49,7 +49,7 @@ export const Footer = () => {
           inputProps={{ "aria-label": "Email Address" }}
         />
 
-        <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
+        {/* <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" /> */}
         <NavigateNextIcon />
       </div>
       <div style={{ marginTop: "80px", display: "flex", gap: "8px" }}>
@@ -77,11 +77,12 @@ export const Footer = () => {
       sx={{
         display: "flex",
         flexDirection: "column",
-        backgroundColor: "#FFF5E4",
+        // backgroundColor: "#FFF5E4",
+        
       }}
     >
       <Divider />
-      <Grid container justifyContent={"center"}>
+      <Grid container justifyContent={"center"} >
         {renderLogoAndText()}
         <Divider orientation="vertical" flexItem />
         <Divider orientation="vertical" variant="middle" flexItem />
