@@ -9,8 +9,9 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import XIcon from "@mui/icons-material/X";
 import EmailIcon from "@mui/icons-material/Email";
 import InstagramIcon from "@mui/icons-material/Instagram";
-
+import TelegramIcon from "@mui/icons-material/Telegram";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
+import DiscordIcon from "../../assets/icon/discordIcon";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -30,7 +31,7 @@ export const Footer = () => {
         gap: "36px",
       }}
     >
-      <img src={logoSVG} alt="Logo" style={{ width: "80px", height: "80px" }} />
+      <img src={logoSVG} alt="Logo" style={{ width: "60px", height: "60px" }} />
       <Typography variant="h5" style={{ width: "320px" }}>
         Don’t miss out on our updates! Subscribe to our newsletter
       </Typography>
@@ -54,19 +55,16 @@ export const Footer = () => {
       </div>
       <div style={{ marginTop: "80px", display: "flex", gap: "8px" }}>
         <IconButton sx={{ backgroundColor: "black", color: "white" }}>
-          <FacebookOutlinedIcon />
-        </IconButton>
-        <IconButton sx={{ backgroundColor: "black", color: "white" }}>
           <GitHubIcon />
         </IconButton>
         <IconButton sx={{ backgroundColor: "black", color: "white" }}>
           <XIcon />
         </IconButton>
+        {/* <IconButton sx={{ backgroundColor: "black", color: "white" }}>
+          <DiscordIcon /> 
+        </IconButton> */}
         <IconButton sx={{ backgroundColor: "black", color: "white" }}>
-          <InstagramIcon />
-        </IconButton>
-        <IconButton sx={{ backgroundColor: "black", color: "white" }}>
-          <EmailIcon />
+          <TelegramIcon />
         </IconButton>
       </div>
     </Grid>
@@ -78,11 +76,10 @@ export const Footer = () => {
         display: "flex",
         flexDirection: "column",
         // backgroundColor: "#FFF5E4",
-        
       }}
     >
       <Divider />
-      <Grid container justifyContent={"center"} >
+      <Grid container justifyContent={"center"}>
         {renderLogoAndText()}
         <Divider orientation="vertical" flexItem />
         <Divider orientation="vertical" variant="middle" flexItem />
@@ -93,18 +90,21 @@ export const Footer = () => {
           md={5.9}
           sm={12}
           xs={12}
-          style={{ display: "flex", flexDirection: "row", alignItems:"center", justifyContent:"space-around", width:"300px" }}
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-around",
+            width: "300px",
+          }}
         >
           <div></div>
           <div>
             <Typography>
               <b>Menu</b>
             </Typography>
-            <Typography>Strategies</Typography>
             <Typography>Docs</Typography>
             <Typography>Careers</Typography>
-
-            <Typography>Vesting</Typography>
             <Typography>Privacy Policy</Typography>
             <Typography>Cookies Policy</Typography>
             <Typography>Contact</Typography>
@@ -121,3 +121,4 @@ export const Footer = () => {
     </Box>
   );
 };
+

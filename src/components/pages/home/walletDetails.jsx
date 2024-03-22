@@ -64,7 +64,7 @@ const WalletDetail = ({ name }) => {
   }
 
   if (!walletDetails) {
-    return <div>Loading...</div>;
+    return <div style={{textAlign:"center", padding:"22px"}}>Loading...</div>;
   }
 
   // Filter tokens with balance greater than 0
@@ -90,8 +90,8 @@ const WalletDetail = ({ name }) => {
         marginBottom: "56px",
       }}
     >
-      <div style={{ textAlign: "center", marginBottom: "48px" }}>
-        <Heading700 styles={{ fontSize: "80px" }}>
+      <div style={{  marginBottom: "48px" }}>
+        <Heading700 styles={{  }}>
           Total Donation Pool Value:
         </Heading700>
       </div>
