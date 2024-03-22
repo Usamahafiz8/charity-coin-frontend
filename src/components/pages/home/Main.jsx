@@ -55,9 +55,9 @@ const Main = () => {
               zIndex: 2, // Ensure content is above the gradient
             }}
           >
-            <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
-              <Heading700 styles={{ color: "#ffffff" }}>Philanthropy :</Heading700>
-              <Heading700 styles={{ color: "#03EEEF" }}> On-Chain</Heading700>
+            <div style={{ display: "flex", gap: "16px", flexWrap: "wrap", marginBottom:"18px" }}>
+              <Heading700 styles={{ color: "#ffffff", fontSize:"2.8em" }}>Philanthropy :</Heading700>
+              <Heading700 styles={{ color: "#03EEEF", fontSize:"2.8em" }}> On-Chain</Heading700>
             </div>
             <Heading400 styles={{ color: "#ffffff" }}>
               CharityCoin harnesses blockchain technology to redefine charitable giving. By leveraging the Solana network, we offer a transparent and efficient platform for collective philanthropy, ensuring every donation makes a meaningful impact towards a better world.
