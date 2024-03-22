@@ -7,6 +7,7 @@ import SolanaWalletBalance from "../components/walletbalance";
 import WalletDetails from "../components/walletbalance";
 import CurrencyInfotext from "../components/walletbalance";
 import WalletDetail from "../components/pages/home/walletDetails";
+import DonationPoolStructure from "../components/pages/home/DonationPoolStructure";
 // import CustomTable from "../components/CurrencyTable/CustomTable";
 
 export const Home = () => {
@@ -15,11 +16,12 @@ export const Home = () => {
       <Layout>
         <Main />
         <Aboutus />
-        {/* <SolanaWalletBalance WalletDetails={WalletAddress}/> */}
-        {/* <CurrencyInfo /> */}
-        <WalletDetail />
-        {/* <CurrencyInfotext/> */}
+        {/* <WalletDetail /> */}
+        <DonationPoolStructure/>
       </Layout>
     </>
   );
 };
+// <SolanaWalletBalance WalletDetails={WalletAddress}/>
+// <CurrencyInfo />
+// <CurrencyInfotext/>
