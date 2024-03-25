@@ -74,9 +74,13 @@ const GeneralForm = () => {
       <Button
         type="submit"
         variant="contained"
-        //   color="primary"
         sx={{
           backgroundColor: "#222623",
+          color: "#A0F8F8", // Text color
+          "&:hover": {
+            backgroundColor: "#A0F8F8", // Change background color on hover
+            color: "#222623", // Change text color on hover
+          },
         }}
         fullWidth
       >
