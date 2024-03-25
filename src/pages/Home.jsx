@@ -8,6 +8,8 @@ import WalletDetails from "../components/walletbalance";
 import CurrencyInfotext from "../components/walletbalance";
 import WalletDetail from "../components/pages/home/walletDetails";
 import DonationPoolStructure from "../components/pages/home/DonationPoolStructure";
+import Partners from "../components/partner/Partners";
+import InboundForm from "../components/form/InboundForm";
 // import CustomTable from "../components/CurrencyTable/CustomTable";
 
 export const Home = () => {
@@ -15,9 +17,11 @@ export const Home = () => {
     <>
       <Layout>
         <Main />
+        <Partners/>
         <Aboutus />
-        {/* <WalletDetail /> */}
+        <WalletDetail />
         <DonationPoolStructure/>
+        <InboundForm/>
       </Layout>
     </>
   );
