@@ -13,8 +13,6 @@ const TokenInfo = ({ address }) => {
         );
         const data = response.data.data[0];
         setTokenDetails(data);
-        console.log("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq");
-        console.log(response.data);
       } catch (error) {
         console.error(`Error fetching ${name} details:`, error);
       }

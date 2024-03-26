@@ -4,6 +4,7 @@ import Heading500 from "../../headings/heading500";
 import axios from "axios";
 import TokenInfo from "./TokenInfo";
 import Heading700 from "../../headings/heading700";
+import FadeIn from "react-fade-in";
 
 const WalletDetail = ({ name }) => {
   const [walletDetails, setWalletDetails] = useState(null);
@@ -64,7 +65,9 @@ const WalletDetail = ({ name }) => {
   }
 
   if (!walletDetails) {
-    return <div style={{textAlign:"center", padding:"22px"}}>Loading...</div>;
+    return (
+      <div style={{ textAlign: "center", padding: "22px" }}>Loading...</div>
+    );
   }
 
   // Filter tokens with balance greater than 0
@@ -90,10 +93,8 @@ const WalletDetail = ({ name }) => {
         marginBottom: "56px",
       }}
     >
-      <div style={{  marginBottom: "48px" }}>
-        <Heading700 styles={{  }}>
-          Total Donation Pool Value:
-        </Heading700>
+      <div style={{ marginBottom: "48px" }}>
+        <Heading700 styles={{}}>Total Donation Pool Value:</Heading700>
       </div>
       <Grid
         container
@@ -122,72 +123,76 @@ const WalletDetail = ({ name }) => {
           <Heading500>$ Amount</Heading500>
         </Grid>
       </Grid>
-
-      {filteredTokens.map((token, index) => (
-        <Grid
-          key={index}
-          container
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-around",
-            alignContent: "center",
-            borderRadius: "8px",
-            padding: "20px",
-            backgroundColor: "#FFFFFF",
-            // border:"3px solid black",
-            marginTop: "8px",
-          }}
-        >
-          <Grid item xl={2} lg={2} md={2} sm={12} xs={12}>
-            {token.content.metadata && (
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: "8px",
-                  flexDirection: "row",
-                }}
-              >
-                <img
-                  src={`${token.content.links.image}`}
-                  alt={`${token.content.metadata.name} Logo`}
+      <FadeIn delay={110}>
+        {filteredTokens.map((token, index) => (
+          <Grid
+            key={index}
+            container
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-around",
+              alignContent: "center",
+              borderRadius: "8px",
+              padding: "20px",
+              backgroundColor: "#FFFFFF",
+              // border:"3px solid black",
+              marginTop: "8px",
+            }}
+          >
+            <Grid item xl={2} lg={2} md={2} sm={12} xs={12}>
+              {token.content.metadata && (
+                <div
                   style={{
-                    width: "50px",
-                    height: "50px",
-                    borderRadius: "10px",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "8px",
+                    flexDirection: "row",
                   }}
-                />
-                <Heading500>{token.content.metadata.symbol}</Heading500>
-              </div> // <Headi ng500>Underlying Asset</Heading500>
-            )}
-          </Grid>
-          <Grid item xl={2} lg={2} md={2} sm={12} xs={12}>
-            {/* {token.token_info.symbol} : */}
+                >
+                  <img
+                    src={`${token.content.links.image}`}
+                    alt={`${token.content.metadata.name} Logo`}
+                    style={{
+                      width: "50px",
+                      height: "50px",
+                      borderRadius: "10px",
+                    }}
+                  />
+                  <Heading500>{token.content.metadata.symbol}</Heading500>
+                </div> // <Headi ng500>Underlying Asset</Heading500>
+              )}
+            </Grid>
+            <Grid item xl={2} lg={2} md={2} sm={12} xs={12}>
+              {/* {token.token_info.symbol} : */}
 
-            <Heading500>
-              {token.strategy ? token.strategy : "No Strategy"}
-            </Heading500>
+              <Heading500>
+                {token.strategy ? token.strategy : "No Strategy"}
+              </Heading500>
+            </Grid>
+            <Grid item xl={2} lg={2} md={2} sm={12} xs={12}>
+              <Heading500>{token.token_info.balance}</Heading500>
+            </Grid>
+            <Grid item xl={2} lg={2} md={2} sm={12} xs={12}>
+              <Heading500>
+                {(
+                  (token.token_info.balance / token.token_info.supply) *
+                  100
+                ).toFixed(2)}
+                %
+              </Heading500>
+            </Grid>
+            <Grid item xl={2} lg={2} md={2} sm={12} xs={12}>
+              <TokenInfo
+                address={token.id}
+                name={token.content.metadata.name}
+              />
+              {/* {token.id} */}
+              {/* <Heading500>{token.id}</Heading500> */}
+            </Grid>
           </Grid>
-          <Grid item xl={2} lg={2} md={2} sm={12} xs={12}>
-            <Heading500>{token.token_info.balance}</Heading500>
-          </Grid>
-          <Grid item xl={2} lg={2} md={2} sm={12} xs={12}>
-            <Heading500>
-              {(
-                (token.token_info.balance / token.token_info.supply) *
-                100
-              ).toFixed(2)}
-              %
-            </Heading500>
-          </Grid>
-          <Grid item xl={2} lg={2} md={2} sm={12} xs={12}>
-            <TokenInfo address={token.id} name={token.content.metadata.name} />
-            {/* {token.id} */}
-            {/* <Heading500>{token.id}</Heading500> */}
-          </Grid>
-        </Grid>
-      ))}
+        ))}
+      </FadeIn>
     </Box>
   );
 };
