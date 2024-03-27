@@ -64,7 +64,7 @@ const Main = () => {
             </Heading400>
           </div>
         </Grid>
-        <Grid item xl={6} lg={6} md={6} sm={12} sx={12}>
+        <Grid item xl={6} lg={6} md={6} sm={12} xs={12}>
           <div
             style={{
               display: "flex",

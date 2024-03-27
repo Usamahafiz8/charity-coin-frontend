@@ -1,10 +1,13 @@
-import { Box, Typography } from "@mui/material";
+import { Box, IconButton, Typography } from "@mui/material";
 import React, { useState, useEffect } from "react";
+import logoSVG from "./../../assets/logo.svg";
+import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
 
 export const Header = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [backgroundColor, setBackgroundColor] = useState("linear-gradient(to bottom, #222623, #A0F8F8)");
-  const [colorName, setColorName] = useState("Blue to Black");
+  const [backgroundColor, setBackgroundColor] = useState(
+    "linear-gradient(to bottom, #222623, #A0F8F8)"
+  );
 
   useEffect(() => {
     let timer;
@@ -17,6 +20,16 @@ export const Header = () => {
         setIsVisible(false);
       }
       lastScrollPosition = currentPosition;
+
+      // Change text color based on scroll position
+      const currentSection = Math.floor(currentPosition / window.innerHeight);
+      if (currentSection % 2 === 0) {
+        // If current section is even, set text color to one color
+        setBackgroundColor("linear-gradient(to bottom, #222623, #A0F8F8)");
+      } else {
+        // If current section is odd, set text color to another color
+        setBackgroundColor("linear-gradient(to bottom, #222623, #FF5733)");
+      }
     };
 
     let lastScrollPosition = window.pageYOffset;
@@ -34,28 +47,50 @@ export const Header = () => {
       clearTimeout(timer);
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []); // Empty dependency array ensures the effect runs only once
+  }, []);
 
   return (
     <Box
       sx={{
-        p: "16px",
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-between",
-        transition: "transform 0.5s ease", // CSS transition for smooth animation
-        transform: isVisible ? "translateY(0)" : "translateY(-100%)", // Slide in from the top when isVisible is true
-        position: "fixed", // Set position to fixed
-        top: 0, // Align to the top
-        width: "98%", // Take full width of the viewport
-        zIndex: 1000, // Set a high z-index to ensure it's on top of other content
-        backgroundColor: backgroundColor, // Set background color
-        boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)", // Add a shadow for depth
+        transition: "transform 0.5s ease",
+        transform: isVisible ? "translateY(0)" : "translateY(-100%)",
+        position: "fixed",
+        top: 0,
+        width: "100%",
+        zIndex: 1000,
       }}
     >
-      <div>Charity Coin logo</div>
-      {/* <div>Menu Button</div> {colorName} */}
-      <Typography variant="body2" sx={{ color: "#01FF95" }}> Menu Button</Typography>
+     <img src={logoSVG} alt="Logo" style={{ width: "60px", height: "60px" }} />
+      {/* <Typography
+        variant="body2"
+        style={{
+          color: backgroundColor.includes("A0F8F8") ? "#A0F8F8" : "#222623",
+        }}
+      >
+        Blue to {backgroundColor.includes("A0F8F8") ? "Black" : "Red"}
+      </Typography> */}
+      <Box
+        sx={{
+          border: `1px solid ${
+            backgroundColor.includes("A0F8F8") ? "#A0F8F8" : "#222623"
+          }`,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "50px",
+          width: "50px",
+          borderRadius: "50%",
+        }}
+      >
+        <DescriptionOutlinedIcon
+          style={{
+            color: backgroundColor.includes("A0F8F8") ? "#A0F8F8" : "#222623",
+          }}
+        />
+      </Box>
     </Box>
   );
 };

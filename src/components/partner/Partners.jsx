@@ -31,7 +31,7 @@ const Partners = () => {
       }}
     >
       {partnersData.map((partner, index) => (
-        <>
+        <div key={index}>
         <motion.img
           key={index}
           src={partner.src}
@@ -40,7 +40,7 @@ const Partners = () => {
           animate={isMobile ? { x: "100vw" } : {}}
           transition={{ duration: 10, ease: "linear", repeat: Infinity }}
           />
-          </>
+          </div>
         
       ))}
     </div>
