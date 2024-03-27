@@ -88,7 +88,6 @@ const WalletDetail = ({ name }) => {
         justifyContent: "center",
         backgroundColor: "#A0F8F8",
         marginBottom: "56px",
-        height: "100vh",
       }}
     >
       <div style={{ marginBottom: "48px" }}>

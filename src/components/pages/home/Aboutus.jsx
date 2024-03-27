@@ -13,7 +13,6 @@ const Aboutus = () => {
         gap: "22px",
         // minHeight: "100vh",
         padding: "22px",
-        height:"100vh"
       }}
     >
       <Heading700 >

@@ -59,37 +59,65 @@ export const Header = () => {
         transform: isVisible ? "translateY(0)" : "translateY(-100%)",
         position: "fixed",
         top: 0,
-        width: "100%",
+        pt:'50px',
+
+        width: "90%",
         zIndex: 1000,
+        "@media (max-width: 768px)": {
+          flexDirection: "row    ",
+          alignItems: "center",
+        },
       }}
     >
-     <img src={logoSVG} alt="Logo" style={{ width: "60px", height: "60px" }} />
-      {/* <Typography
-        variant="body2"
-        style={{
-          color: backgroundColor.includes("A0F8F8") ? "#A0F8F8" : "#222623",
-        }}
-      >
-        Blue to {backgroundColor.includes("A0F8F8") ? "Black" : "Red"}
-      </Typography> */}
-      <Box
-        sx={{
-          border: `1px solid ${
-            backgroundColor.includes("A0F8F8") ? "#A0F8F8" : "#222623"
-          }`,
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "50px",
-          width: "50px",
-          borderRadius: "50%",
-        }}
-      >
-        <DescriptionOutlinedIcon
+      
+        <Typography
+          variant="body2"
           style={{
             color: backgroundColor.includes("A0F8F8") ? "#A0F8F8" : "#222623",
           }}
-        />
+        >
+          Logo 
+           {/* {backgroundColor.includes("A0F8F8") ? "Black" : "Red"} */}
+        </Typography> 
+      {/* <img src={logoSVG} alt="Logo" style={{ width: "60px", height: "60px" }} /> */}
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          alignItems: "center",
+          "@media (max-width: 768px)": {
+            marginTop: "20px",
+          },
+        }}
+      >
+        {/* <Typography
+          variant="body2"
+          style={{
+            color: backgroundColor.includes("A0F8F8") ? "#A0F8F8" : "#222623",
+          }}
+        >
+          Blue to {backgroundColor.includes("A0F8F8") ? "Black" : "Red"}
+        </Typography> */}
+        <Box
+          sx={{
+            border: `1px solid ${
+              backgroundColor.includes("A0F8F8") ? "#A0F8F8" : "#222623"
+            }`,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "50px",
+            width: "50px",
+            borderRadius: "50%",
+            marginLeft: "10px",
+          }}
+        >
+          <DescriptionOutlinedIcon
+            style={{
+              color: backgroundColor.includes("A0F8F8") ? "#A0F8F8" : "#222623",
+            }}
+          />
+        </Box>
       </Box>
     </Box>
   );
