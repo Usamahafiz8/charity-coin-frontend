@@ -4,7 +4,7 @@ import Heading500 from "../../headings/heading500";
 import axios from "axios";
 import TokenInfo from "./TokenInfo";
 import Heading700 from "../../headings/heading700";
-import FadeIn from "react-fade-in";
+// import FadeIn from "react-fade-in";
 
 const WalletDetail = ({ name }) => {
   const [walletDetails, setWalletDetails] = useState(null);
@@ -121,7 +121,7 @@ const WalletDetail = ({ name }) => {
           <Heading500>$ Amount</Heading500>
         </Grid>
       </Grid>
-      <FadeIn delay={110}>
+      {/* <FadeIn delay={110}> */}
         {filteredTokens.map((token, index) => (
           <Grid
             key={index}
@@ -190,7 +190,7 @@ const WalletDetail = ({ name }) => {
             </Grid>
           </Grid>
         ))}
-      </FadeIn>
+      {/* </FadeIn> */}
     </Box>
   );
 };
