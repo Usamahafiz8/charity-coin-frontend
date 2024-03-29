@@ -1,8 +1,7 @@
 import { Box, Divider, Grid, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { motion, useAnimation } from "framer-motion";
+import { motion } from "framer-motion";
 import useResponsivePadding from "../../reponsive/ResponsibePadding";
-import { useInView } from "react-intersection-observer";
 
 const donationDetails = [
   {
@@ -25,25 +24,32 @@ const donationDetails = [
 ];
 
 const DonationPoolStructure = () => {
-  const [scrollY, setScrollY] = useState(0);
-  const controls = useAnimation();
-  const isMobile = useResponsivePadding();
-  const { ref, inView } = useInView();
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    if (inView) {
-      controls.start({ y: 0, opacity: 1 });
-    }
-  }, [inView, controls]);
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 960); // Set isMobile to true if window width is less than 960px
+    };
+
+    handleResize(); // Call handleResize once to set initial state
+    window.addEventListener("resize", handleResize); // Add event listener for resize
+
+    return () => {
+      window.removeEventListener("resize", handleResize); // Cleanup event listener on unmount
+    };
+  }, []);
+
+  const animateOnScroll = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
 
   return (
     <Box
-      ref={ref}
       sx={{
         backgroundColor: "#222623",
         padding: isMobile ? "50px 200px 100px 200px " : "22px",
         color: "white",
-        
       }}
     >
       <Grid container>
@@ -58,22 +64,14 @@ const DonationPoolStructure = () => {
           </Typography>
         </Grid>
         <Grid item xl={6} lg={6} md={6} sm={12}>
-          <motion.div
-            style={{
-              marginTop: "100px",
-              height: "100vh",
-              opacity: 0,
-            }}
-            animate={controls}
-            initial={{ y: 50, opacity: 0 }} // Initial position and opacity
-          >
+          <div style={{ marginTop: "100px",  }}>
             {donationDetails.map((details, index) => (
               <motion.div
                 key={index}
                 style={{ marginBottom: "80px" }}
-                initial={{ opacity: 0, y: -50 }} // Initial position of the details
-                animate={{ opacity: 1, y: 0 }} // Animation when entering the viewport
-                transition={{ delay: index * 0.1 }} // Delay each animation
+                initial="hidden"
+                animate="visible"
+                variants={animateOnScroll}
               >
                 <Typography sx={{ color: "#03EEEF", fontSize: "5em" }}>
                   {details.value}
@@ -88,7 +86,7 @@ const DonationPoolStructure = () => {
                 </Typography>
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         </Grid>
       </Grid>
     </Box>
