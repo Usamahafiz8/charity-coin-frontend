@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import DonateButton from "../../buttons/DonateButton";
+import DonateButton from "./../../Buttons/DonateButton";
 import { Grid } from "@mui/material";
 import Heading700 from "../../headings/heading700";
 import Heading400 from "../../headings/heading400";
