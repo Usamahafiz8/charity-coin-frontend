@@ -20,8 +20,8 @@ export const Home = () => {
         {/* <Partners/> */}
         <Aboutus />
         <WalletDetail />
-        <DonationPoolStructure/>
-        <InboundForm/>
+        <DonationPoolStructure />
+        <InboundForm />
       </Layout>
     </>
   );

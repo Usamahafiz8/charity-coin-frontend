@@ -1,9 +1,9 @@
 import { Button, Grid, Typography } from "@mui/material";
 import React from "react";
 import logoSVG from "./../../../assets/solana.svg"; // Import your SVG file
-import Heading700 from "../../headings/heading700";
-import Heading500 from "../../headings/heading500";
-import Heading400 from "../../headings/heading400";
+import Heading700 from "./../../headings/heading700";
+import Heading500 from "./../../headings/heading500";
+import Heading400 from "./../../headings/heading400";
 
 const Main = () => {
   return (
@@ -55,8 +55,8 @@ const Main = () => {
               zIndex: 2, // Ensure content is above the gradient
             }}
           >
-            <div style={{ display: "flex", gap: "16px", flexWrap: "wrap", marginBottom:"18px" }}>
-              <Heading700 styles={{ color: "#ffffff", fontSize:"2.8em" }}>Philanthropy :</Heading700>
+            <div style={{ display: "flex", gap: "8px", flexWrap: "wrap", marginBottom:"18px" }}>
+              <Heading700 styles={{ color: "#ffffff", fontSize:"2.8em" }}>Philanthropy:</Heading700>
               <Heading700 styles={{ color: "#03EEEF", fontSize:"2.8em" }}> On-Chain</Heading700>
             </div>
             <Heading400 styles={{ color: "#ffffff" }}>

@@ -104,7 +104,6 @@ export const Footer = () => {
               <b>Menu</b>
             </Typography>
             <Typography>Docs</Typography>
-            <Typography>Careers</Typography>
             <Typography>Privacy Policy</Typography>
             <Typography>Cookies Policy</Typography>
             <Typography>Contact</Typography>

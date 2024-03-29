@@ -1,6 +1,6 @@
 import { Box, Divider, Grid } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import Heading500 from "../../headings/heading500";
+import Heading500 from "./../../headings/heading500";
 import axios from "axios";
 import TokenInfo from "./TokenInfo";
 import Heading700 from "../../headings/heading700";
@@ -91,7 +91,7 @@ const WalletDetail = ({ name }) => {
       }}
     >
       <div style={{ marginBottom: "48px" }}>
-        <Heading700 styles={{}}>Total Donation Pool Value:</Heading700>
+        <Heading700 styles={{fontSize:'3.5em'}}>Total Donation Pool Value:</Heading700>
       </div>
       <Grid
         container
@@ -108,7 +108,7 @@ const WalletDetail = ({ name }) => {
           <Heading500>Underlying Asset</Heading500>
         </Grid>
         <Grid item xl={2} lg={2} md={2} sm={12} xs={12}>
-          <Heading500>-----</Heading500>
+          <Heading500>Token Name</Heading500>
         </Grid>
         <Grid item xl={2} lg={2} md={2} sm={12} xs={12}>
           <Heading500>Token Amount</Heading500>
@@ -121,74 +121,122 @@ const WalletDetail = ({ name }) => {
         </Grid>
       </Grid>
       {/* <FadeIn delay={110}> */}
-        {filteredTokens.map((token, index) => (
+      {filteredTokens.map((token, index) => (
+        <Grid
+          key={index}
+          container
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-around",
+            alignContent: "center",
+            borderRadius: "8px",
+            padding: "10px",
+            backgroundColor: "#FFFFFF",
+            // border:"3px solid black",
+            marginTop: "4px",
+          }}
+        >
+          <Grid item xl={2} lg={2} md={2} sm={12} xs={12}>
+            {token.content.metadata && (
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "8px",
+                  flexDirection: "row",
+                }}
+              >
+                <img
+                  src={`${token.content.links.image}`}
+                  alt={`${token.content.metadata.name} Logo`}
+                  style={{
+                    width: "50px",
+                    height: "50px",
+                    borderRadius: "10px",
+                  }}
+                />
+                <Heading500>{token.content.metadata.symbol}</Heading500>
+              </div> // <Headi ng500>Underlying Asset</Heading500>
+            )}
+          </Grid>
           <Grid
-            key={index}
-            container
-            sx={{
+            item
+            xl={2}
+            lg={2}
+            md={2}
+            sm={12}
+            xs={12}
+            style={{
               display: "flex",
+              alignItems: "center",
+
               flexDirection: "row",
-              justifyContent: "space-around",
-              alignContent: "center",
-              borderRadius: "8px",
-              padding: "20px",
-              backgroundColor: "#FFFFFF",
-              // border:"3px solid black",
-              marginTop: "8px",
             }}
           >
-            <Grid item xl={2} lg={2} md={2} sm={12} xs={12}>
-              {token.content.metadata && (
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "8px",
-                    flexDirection: "row",
-                  }}
-                >
-                  <img
-                    src={`${token.content.links.image}`}
-                    alt={`${token.content.metadata.name} Logo`}
-                    style={{
-                      width: "50px",
-                      height: "50px",
-                      borderRadius: "10px",
-                    }}
-                  />
-                  <Heading500>{token.content.metadata.symbol}</Heading500>
-                </div> // <Headi ng500>Underlying Asset</Heading500>
-              )}
-            </Grid>
-            <Grid item xl={2} lg={2} md={2} sm={12} xs={12}>
-              {/* {token.token_info.symbol} : */}
-
-              <Heading500>
-                {token.strategy ? token.strategy : "No Strategy"}
-              </Heading500>
-            </Grid>
-            <Grid item xl={2} lg={2} md={2} sm={12} xs={12}>
-              <Heading500>{token.token_info.balance}</Heading500>
-            </Grid>
-            <Grid item xl={2} lg={2} md={2} sm={12} xs={12}>
-              <Heading500>
-                {(
-                  (token.token_info.balance / token.token_info.supply) *
-                  100
-                ).toFixed(2)}
-                %
-              </Heading500>
-            </Grid>
-            <Grid item xl={2} lg={2} md={2} sm={12} xs={12}>
-              <TokenInfo
-                address={token.id}
-                name={token.content.metadata.name}
-              />
-              {/* {token.id} */}
-              {/* <Heading500>{token.id}</Heading500> */}
-            </Grid>
+            <Heading500>
+              {token.content.metadata.name}
+              {/* {token.strategy ? token.strategy : "No Strategy"} */}
+            </Heading500>
           </Grid>
-        ))}
+          <Grid
+            item
+            xl={2}
+            lg={2}
+            md={2}
+            sm={12}
+            xs={12}
+            style={{
+              display: "flex",
+              alignItems: "center",
+
+              flexDirection: "row",
+            }}
+          >
+            <Heading500>{token.token_info.balance}</Heading500>
+          </Grid>
+          <Grid
+            item
+            xl={2}
+            lg={2}
+            md={2}
+            sm={12}
+            xs={12}
+            style={{
+              display: "flex",
+              alignItems: "center",
+
+              flexDirection: "row",
+            }}
+          >
+            <Heading500>
+              {(
+                (token.token_info.balance / token.token_info.supply) *
+                100
+              ).toFixed(2)}
+              %
+            </Heading500>
+          </Grid>
+          <Grid
+            item
+            xl={2}
+            lg={2}
+            md={2}
+            sm={12}
+            xs={12}
+            style={{
+              display: "flex",
+              alignItems: "center",
+
+              flexDirection: "row",
+            }}
+          >
+            <TokenInfo address={token.id} name={token.content.metadata.name} />
+            {/* {token.id} */}
+            {/* <Heading500>{token.id}</Heading500> */}
+          </Grid>
+        </Grid>
+      ))}
       {/* </FadeIn> */}
     </Box>
   );

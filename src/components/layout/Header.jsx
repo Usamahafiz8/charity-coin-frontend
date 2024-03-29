@@ -1,6 +1,6 @@
 import { Box, IconButton, Typography } from "@mui/material";
 import React, { useState, useEffect } from "react";
-import logoSVG from "./../../assets/logo.svg";
+import logoSVG from "./../../assets/Charity_Logo.png";
 import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
 
 export const Header = () => {
@@ -59,7 +59,7 @@ export const Header = () => {
         transform: isVisible ? "translateY(0)" : "translateY(-100%)",
         position: "fixed",
         top: 0,
-        pt:'50px',
+        pt: "50px",
 
         width: "90%",
         zIndex: 1000,
@@ -69,17 +69,7 @@ export const Header = () => {
         },
       }}
     >
-      
-        <Typography
-          variant="body2"
-          style={{
-            color: backgroundColor.includes("A0F8F8") ? "#A0F8F8" : "#222623",
-          }}
-        >
-          Logo 
-           {/* {backgroundColor.includes("A0F8F8") ? "Black" : "Red"} */}
-        </Typography> 
-      {/* <img src={logoSVG} alt="Logo" style={{ width: "60px", height: "60px" }} /> */}
+      <img src={logoSVG} alt="Logo" style={{ width: "50px", height: "5  0px" }} />
       <Box
         sx={{
           display: "flex",

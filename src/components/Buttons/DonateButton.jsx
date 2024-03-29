@@ -8,6 +8,7 @@ import FileCopyOutlinedIcon from "@mui/icons-material/FileCopyOutlined";
 import "./styles.css";
 import { IconButton, Snackbar } from "@mui/material";
 import ContentCopyOutlinedIcon from "@mui/icons-material/ContentCopyOutlined";
+import Heading700 from "../headings/heading700";
 
 const style = {
   position: "absolute",
@@ -57,8 +58,11 @@ const DonateButton = () => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
+          <Heading700>
+
             Donate Now
+          </Heading700>
+          <Typography id="modal-modal-title" variant="h6" component="h2">
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             Scan the QR code below or copy the link to donate directly:

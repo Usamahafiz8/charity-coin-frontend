@@ -1,8 +1,7 @@
 import { Box, Divider, Grid, Typography } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
-import Heading500 from "../../headings/heading500";
-import Heading400 from "../../headings/heading400";
+
 
 const donationDetails = [
   {
