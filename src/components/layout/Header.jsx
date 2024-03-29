@@ -2,6 +2,7 @@ import { Box, IconButton, Typography } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import logoSVG from "./../../assets/Charity_Logo.png";
 import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
+import useResponsivePadding from "../reponsive/ResponsibePadding";
 
 export const Header = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -21,15 +22,13 @@ export const Header = () => {
       }
       lastScrollPosition = currentPosition;
 
-      // Change text color based on scroll position
+      // Change background color based on scroll position
       const currentSection = Math.floor(currentPosition / window.innerHeight);
-      if (currentSection % 2 === 0) {
-        // If current section is even, set text color to one color
-        setBackgroundColor("linear-gradient(to bottom, #222623, #A0F8F8)");
-      } else {
-        // If current section is odd, set text color to another color
-        setBackgroundColor("linear-gradient(to bottom, #222623, #FF5733)");
-      }
+      const colors = ["linear-gradient(to bottom, #222623, #A0F8F8)",
+                     "linear-gradient(to bottom, #222623, #FF5733)",
+                     "linear-gradient(to bottom, #222623, #FFFF00)",
+                     "linear-gradient(to bottom, #222623, #A0F8F8)"];
+      setBackgroundColor(colors[currentSection % 4]);
     };
 
     let lastScrollPosition = window.pageYOffset;
@@ -49,6 +48,8 @@ export const Header = () => {
     };
   }, []);
 
+  const isMobile = useResponsivePadding();
+
   return (
     <Box
       sx={{
@@ -59,25 +60,26 @@ export const Header = () => {
         transform: isVisible ? "translateY(0)" : "translateY(-100%)",
         position: "fixed",
         top: 0,
-        pt: "50px",
-
-        width: "90%",
+        pt: "30px",
+        width: isMobile ? "80%" : "90%",
         zIndex: 1000,
         "@media (max-width: 768px)": {
           flexDirection: "row    ",
           alignItems: "center",
         },
+        // background: backgroundColor,
       }}
     >
-      <img src={logoSVG} alt="Logo" style={{ width: "50px", height: "5  0px" }} />
+      <img
+        src={logoSVG}
+        alt="Logo"
+        style={{ width: "50px", height: "50px" }}
+      />
       <Box
         sx={{
           display: "flex",
-          flexDirection: "row",
+          flexDirection: "coloumn",
           alignItems: "center",
-          "@media (max-width: 768px)": {
-            marginTop: "20px",
-          },
         }}
       >
         {/* <Typography
@@ -99,7 +101,6 @@ export const Header = () => {
             height: "50px",
             width: "50px",
             borderRadius: "50%",
-            marginLeft: "10px",
           }}
         >
           <DescriptionOutlinedIcon

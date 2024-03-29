@@ -4,11 +4,14 @@ import Heading500 from "./../../headings/heading500";
 import axios from "axios";
 import TokenInfo from "./TokenInfo";
 import Heading700 from "../../headings/heading700";
-// import FadeIn from "react-fade-in";
+import useResponsivePadding from "../../reponsive/ResponsibePadding";
+import Heading400 from "../../headings/heading400";
+import { motion } from "framer-motion";
 
-const WalletDetail = ({ name }) => {
+const WalletDetail = () => {
   const [walletDetails, setWalletDetails] = useState(null);
   const [error, setError] = useState(null);
+  const isMobile = useResponsivePadding(); // Get the mobile state
 
   useEffect(() => {
     const fetchWalletDetails = async () => {
@@ -51,11 +54,11 @@ const WalletDetail = ({ name }) => {
   }, []);
 
   // Function to filter tokens with balance greater than 0
-  const filterTokens = (tokens) => {
-    return tokens.filter(
-      (token) => token.token_info && token.token_info.balance > 0
-    );
-  };
+  // const filterTokens = (tokens) => {
+  //   return tokens.filter(
+  //     (token) => token.token_info && token.token_info.balance > 0
+  //   );
+  // };
 
   if (error) {
     return <div>Error: {error}</div>;
@@ -79,165 +82,261 @@ const WalletDetail = ({ name }) => {
         .slice(0, 8)
     : [];
 
+  // Animation variants
+  const variants = {
+    initial: { opacity: 0, y: -50 },
+    animate: { opacity: 1, y: 0 },
+  };
+
   return (
     <Box
       sx={{
         display: "flex",
         flexDirection: "column",
-        padding: "20px",
+        padding: isMobile ? "22px 200px" : "22px", // Set padding based on isMobile state
         justifyContent: "center",
         backgroundColor: "#A0F8F8",
         marginBottom: "56px",
       }}
     >
       <div style={{ marginBottom: "48px" }}>
-        <Heading700 styles={{fontSize:'3.5em'}}>Total Donation Pool Value:</Heading700>
+        <Heading700 styles={{ fontSize: "3.5em" }}>
+          Total Donation Pool Value:
+        </Heading700>
       </div>
-      <Grid
-        container
-        sx={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-around",
-          alignContent: "center",
-          borderBottom: "3px solid black",
-          paddingBottom: "30px",
-        }}
-      >
-        <Grid item xl={2} lg={2} md={2} sm={12} xs={12}>
-          <Heading500>Underlying Asset</Heading500>
-        </Grid>
-        <Grid item xl={2} lg={2} md={2} sm={12} xs={12}>
-          <Heading500>Token Name</Heading500>
-        </Grid>
-        <Grid item xl={2} lg={2} md={2} sm={12} xs={12}>
-          <Heading500>Token Amount</Heading500>
-        </Grid>
-        <Grid item xl={2} lg={2} md={2} sm={12} xs={12}>
-          <Heading500>Percentage of Total Supply </Heading500>
-        </Grid>
-        <Grid item xl={2} lg={2} md={2} sm={12} xs={12}>
-          <Heading500>$ Amount</Heading500>
-        </Grid>
-      </Grid>
-      {/* <FadeIn delay={110}> */}
-      {filteredTokens.map((token, index) => (
-        <Grid
-          key={index}
-          container
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-around",
-            alignContent: "center",
-            borderRadius: "8px",
-            padding: "10px",
-            backgroundColor: "#FFFFFF",
-            // border:"3px solid black",
-            marginTop: "4px",
-          }}
-        >
-          <Grid item xl={2} lg={2} md={2} sm={12} xs={12}>
-            {token.content.metadata && (
-              <div
-                style={{
+      {isMobile ? (
+        <>
+          <Grid
+            container
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-around",
+              alignContent: "center",
+              borderBottom: "3px solid black",
+              paddingBottom: "30px",
+            }}
+          >
+            <Grid item xl={2} lg={2} md={2} sm={12} xs={12}>
+              <Heading500>Underlying Asset</Heading500>
+            </Grid>
+            <Grid item xl={2} lg={2} md={2} sm={12} xs={12}>
+              <Heading500>Token Name</Heading500>
+            </Grid>
+            <Grid item xl={2} lg={2} md={2} sm={12} xs={12}>
+              <Heading500>Token Amount</Heading500>
+            </Grid>
+            <Grid item xl={2} lg={2} md={2} sm={12} xs={12}>
+              <Heading500>Percentage of Total Supply </Heading500>
+            </Grid>
+            <Grid item xl={2} lg={2} md={2} sm={12} xs={12}>
+              <Heading500>$ Amount</Heading500>
+            </Grid>
+          </Grid>
+
+          <motion.div
+            initial="initial"
+            animate="animate"
+            variants={variants}
+            transition={{ duration: 2 }}
+          >
+            {filteredTokens.map((token, index) => (
+              <Grid
+                key={index}
+                container
+                sx={{
                   display: "flex",
-                  alignItems: "center",
-                  gap: "8px",
                   flexDirection: "row",
+                  justifyContent: "space-around",
+                  alignContent: "center",
+                  borderRadius: "16px",
+                  padding: "16px 8px ",
+                  backgroundColor: "#FFFFFF",
+                  marginTop: "6px",
                 }}
               >
+                <Grid item xl={2} lg={2} md={2} sm={12} xs={12}>
+                  {token.content.metadata && (
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "16px",
+                        flexDirection: "row",
+                      }}
+                    >
+                      <img
+                        src={`${token.content.links.image}`}
+                        alt={`${token.content.metadata.name} Logo`}
+                        style={{
+                          width: "50px",
+                          height: "50px",
+                          borderRadius: "10px",
+                        }}
+                      />
+                      <Heading500>{token.content.metadata.symbol}</Heading500>
+                    </div> // <Headi ng500>Underlying Asset</Heading500>
+                  )}
+                </Grid>
+                <Grid
+                  item
+                  xl={2}
+                  lg={2}
+                  md={2}
+                  sm={12}
+                  xs={12}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+
+                    flexDirection: "row",
+                  }}
+                >
+                  <Heading500>
+                    {token.content.metadata.name}
+                    {/* {token.strategy ? token.strategy : "No Strategy"} */}
+                  </Heading500>
+                </Grid>
+                <Grid
+                  item
+                  xl={2}
+                  lg={2}
+                  md={2}
+                  sm={12}
+                  xs={12}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+
+                    flexDirection: "row",
+                  }}
+                >
+                  <Heading500>{token.token_info.balance}</Heading500>
+                </Grid>
+                <Grid
+                  item
+                  xl={2}
+                  lg={2}
+                  md={2}
+                  sm={12}
+                  xs={12}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+
+                    flexDirection: "row",
+                  }}
+                >
+                  <Heading500>
+                    {(
+                      (token.token_info.balance / token.token_info.supply) *
+                      100
+                    ).toFixed(2)}
+                    %
+                  </Heading500>
+                </Grid>
+                <Grid
+                  item
+                  xl={2}
+                  lg={2}
+                  md={2}
+                  sm={12}
+                  xs={12}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+
+                    flexDirection: "row",
+                  }}
+                >
+                  <TokenInfo
+                    address={token.id}
+                    name={token.content.metadata.name}
+                  />
+                  {/* {token.id} */}
+                  {/* <Heading500>{token.id}</Heading500> */}
+                </Grid>
+              </Grid>
+            ))}
+          </motion.div>
+        </>
+      ) : null}
+      {!isMobile && (
+        <motion.div
+          initial="initial"
+          animate="animate"
+          variants={variants}
+          transition={{ duration: 2 }}
+        >
+          {" "}
+          {filteredTokens.map((token, index) => (
+            <div
+              key={index}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                gap: "28px",
+                justifyContent: "space-around",
+                alignContent: "center",
+                borderRadius: "16px",
+                padding: "22px 16px",
+                backgroundColor: "#FFFFFF",
+                marginTop: "6px",
+              }}
+            >
+              <div>
+                <Heading400 styles={{ fontSize: "1em" }}>
+                  Underlying Asset
+                </Heading400>
                 <img
                   src={`${token.content.links.image}`}
                   alt={`${token.content.metadata.name} Logo`}
                   style={{
                     width: "50px",
                     height: "50px",
-                    borderRadius: "10px",
+                    borderRadius: "50px",
                   }}
                 />
-                <Heading500>{token.content.metadata.symbol}</Heading500>
-              </div> // <Headi ng500>Underlying Asset</Heading500>
-            )}
-          </Grid>
-          <Grid
-            item
-            xl={2}
-            lg={2}
-            md={2}
-            sm={12}
-            xs={12}
-            style={{
-              display: "flex",
-              alignItems: "center",
+              </div>
 
-              flexDirection: "row",
-            }}
-          >
-            <Heading500>
-              {token.content.metadata.name}
-              {/* {token.strategy ? token.strategy : "No Strategy"} */}
-            </Heading500>
-          </Grid>
-          <Grid
-            item
-            xl={2}
-            lg={2}
-            md={2}
-            sm={12}
-            xs={12}
-            style={{
-              display: "flex",
-              alignItems: "center",
+              <div>
+                <Heading400 styles={{ fontSize: "1em" }}>Token Name</Heading400>
+                <Heading500>{token.content.metadata.name}</Heading500>
+              </div>
+              <div>
+                <Heading400 styles={{ fontSize: "1em" }}>
+                  Token Amount
+                </Heading400>
 
-              flexDirection: "row",
-            }}
-          >
-            <Heading500>{token.token_info.balance}</Heading500>
-          </Grid>
-          <Grid
-            item
-            xl={2}
-            lg={2}
-            md={2}
-            sm={12}
-            xs={12}
-            style={{
-              display: "flex",
-              alignItems: "center",
+                <Heading500>{token.token_info.balance}</Heading500>
+              </div>
 
-              flexDirection: "row",
-            }}
-          >
-            <Heading500>
-              {(
-                (token.token_info.balance / token.token_info.supply) *
-                100
-              ).toFixed(2)}
-              %
-            </Heading500>
-          </Grid>
-          <Grid
-            item
-            xl={2}
-            lg={2}
-            md={2}
-            sm={12}
-            xs={12}
-            style={{
-              display: "flex",
-              alignItems: "center",
+              <div>
+                <Heading400 styles={{ fontSize: "1em" }}>
+                  Percentage of Total Supply
+                </Heading400>
 
-              flexDirection: "row",
-            }}
-          >
-            <TokenInfo address={token.id} name={token.content.metadata.name} />
-            {/* {token.id} */}
-            {/* <Heading500>{token.id}</Heading500> */}
-          </Grid>
-        </Grid>
-      ))}
-      {/* </FadeIn> */}
+                <Heading500>
+                  {(
+                    (token.token_info.balance / token.token_info.supply) *
+                    100
+                  ).toFixed(2)}
+                  %
+                </Heading500>
+              </div>
+
+              <div>
+                <Heading400 styles={{ fontSize: "1em" }}>$ Amount</Heading400>
+
+                <TokenInfo
+                  address={token.id}
+                  name={token.content.metadata.name}
+                />
+              </div>
+            </div>
+          ))}
+        </motion.div>
+      )}
     </Box>
   );
 };

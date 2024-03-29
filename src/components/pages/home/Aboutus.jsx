@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 
-import DonateButton from "../../Buttons/DonateButton";
+import DonateButton from "../../buttons/DonateButton";
 import { Grid } from "@mui/material";
 import Heading700 from "../../headings/heading700";
 import Heading400 from "../../headings/heading400";
+import useResponsivePadding from "../../reponsive/ResponsibePadding";
 
 const Aboutus = () => {
+  const ismobile = useResponsivePadding()
+
   return (
     <div
       style={{
@@ -14,23 +17,33 @@ const Aboutus = () => {
         // flexDirection: "column",
         // justifyContent: "space-evenly",
         // gap: "22px",
-        padding: "22px",
+        padding: ismobile ? "22px 200px":"22px",
+        
       }}
     >
       <Grid container>
         <Grid item xl={12} lg={12} md={12} sm={12}>
-          <Heading700 styles={{fontSize:'3.5em'}}>Donation Pool Total Holdings: $123</Heading700>
+          <Heading700 styles={{ fontSize: "3.5em" }}>
+            Donation Pool Total Holdings: $123
+          </Heading700>
         </Grid>
         <Grid item xl={6} lg={6} md={6} sm={12}>
           {/* <Heading700>Donation Pool Total Holdings: $123</Heading700> */}
         </Grid>
-        <Grid item xl={6} lg={6} md={6} sm={12} style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent:"space-around",
-          gap: "22px",
-          padding: "22px",
-        }}>
+        <Grid
+          item
+          xl={6}
+          lg={6}
+          md={6}
+          sm={12}
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-around",
+            gap: "22px",
+            padding: "22px",
+          }}
+        >
           <Heading700>PROGRAMMATIC PHILANTHROPY</Heading700>
 
           <Heading400 styles={{ color: "rgba(0, 0, 0, 0.5)" }}>
