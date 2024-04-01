@@ -6,21 +6,25 @@ import WalletDetail from "../components/pages/home/walletDetails";
 import DonationPoolStructure from "../components/pages/home/DonationPoolStructure";
 import Partners from "../components/partner/Partners";
 import InboundForm from "../components/form/InboundForm";
+import { Box } from "@mui/material";
+import DonateButton from "../components/buttons/DonateButton";
 
-export const Home = () => {
+const HomePage = () => {
   return (
-    <>
-      <Layout>
-        <Main />
-        {/* <Partners/> */}
-        <Aboutus />
-        <WalletDetail />
-        <DonationPoolStructure />
-        <InboundForm />
-      </Layout>
-    </>
+    <Layout>
+      <Main />
+      {/* <Partners/> */}
+      <Aboutus />
+      <WalletDetail />
+      <DonationPoolStructure />
+      <Box
+        sx={{ padding: "8px", textAlign: "center", backgroundColor: "#222623" }}
+      >
+        <DonateButton />
+      </Box>
+      <InboundForm />
+    </Layout>
   );
 };
-// <SolanaWalletBalance WalletDetails={WalletAddress}/>
-// <CurrencyInfo />
-// <CurrencyInfotext/>
+
+export default HomePage;

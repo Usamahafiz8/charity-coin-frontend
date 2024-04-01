@@ -1,5 +1,6 @@
 import { Box, TextField, Button, Typography } from "@mui/material";
 import React, { useState } from "react";
+import Heading700 from "../headings/heading700";
 
 // Custom text field component
 const CustomTextField = ({ id, label, value, onChange, multiline = false }) => {
@@ -21,9 +22,12 @@ const CustomTextField = ({ id, label, value, onChange, multiline = false }) => {
 
 const GeneralForm = () => {
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    Your_Message: "",
+    Organization_Name: "",
+    Organization_Website: "",
+    Organization_Mission: "",
+    Contact_Name: "",
+    Contact_Email: "",
+    Funding_Purpose: "",
   });
 
   const handleChange = (event) => {
@@ -41,34 +45,43 @@ const GeneralForm = () => {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      style={
-        {
-          // display: "flex",
-          // justifyContent: "center",
-          // flexDirection: "column",
-          // alignItems: "center",
-        }
-      }
-    >
+    <form onSubmit={handleSubmit}>
       <CustomTextField
-        id="name"
-        label="Name"
-        value={formData.name}
+        id="Organization_Name"
+        label="Organization Name"
+        value={formData.Organization_Name}
         onChange={handleChange}
       />
       <CustomTextField
-        id="email"
-        label="Email"
-        value={formData.email}
+        id="Organization_Website"
+        label="Organization Website"
+        value={formData.Organization_Website}
         onChange={handleChange}
       />
       <CustomTextField
-        id="Your_Message"
-        label="Your Message"
-        // multiline
-        value={formData.Your_Message}
+        id="Organization_Mission"
+        label="Organization Mission"
+        multiline
+        value={formData.Organization_Mission}
+        onChange={handleChange}
+      />
+      <CustomTextField
+        id="Contact_Name"
+        label="Contact Name"
+        value={formData.Contact_Name}
+        onChange={handleChange}
+      />
+      <CustomTextField
+        id="Contact_Email"
+        label="Contact Email"
+        value={formData.Contact_Email}
+        onChange={handleChange}
+      />
+      <CustomTextField
+        id="Funding_Purpose"
+        label="Funding Purpose"
+        multiline
+        value={formData.Funding_Purpose}
         onChange={handleChange}
       />
       <Button
@@ -109,8 +122,10 @@ const InboundForm = () => {
         }}
       >
         <Typography variant="h5" gutterBottom sx={{ textAlign: "center" }}>
-          Contact Form
         </Typography>
+        <Heading700 styles={{textAlign:"center"}}>
+          Inbound Contact Form
+        </Heading700>
         <GeneralForm />
       </Box>
     </div>

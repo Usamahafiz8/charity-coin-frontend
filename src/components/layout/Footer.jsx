@@ -1,17 +1,14 @@
 import React from "react";
 import Divider from "@mui/material/Divider";
 import { Typography, Grid, Box } from "@mui/material";
-import logoSVG from "./../../assets/logo.svg";
+import logoSVG from "./../../assets/Charity_Logo.png";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import InputBase from "@mui/material/InputBase";
 import IconButton from "@mui/material/IconButton";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import XIcon from "@mui/icons-material/X";
-import EmailIcon from "@mui/icons-material/Email";
-import InstagramIcon from "@mui/icons-material/Instagram";
 import TelegramIcon from "@mui/icons-material/Telegram";
-import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
-import DiscordIcon from "../../assets/icon/discordIcon";
+
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();

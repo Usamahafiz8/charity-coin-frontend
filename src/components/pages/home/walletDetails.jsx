@@ -99,11 +99,7 @@ const WalletDetail = () => {
         marginBottom: "56px",
       }}
     >
-      <div style={{ marginBottom: "48px" }}>
-        <Heading700 styles={{ fontSize: "3.5em" }}>
-          Total Donation Pool Value:
-        </Heading700>
-      </div>
+
       {isMobile ? (
         <>
           <Grid
@@ -268,7 +264,7 @@ const WalletDetail = () => {
           variants={variants}
           transition={{ duration: 2 }}
         >
-          {" "}
+          
           {filteredTokens.map((token, index) => (
             <div
               key={index}

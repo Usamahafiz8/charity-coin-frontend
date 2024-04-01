@@ -44,13 +44,31 @@ const DonateButton = () => {
     setCopied(true);
   };
 
-  const displayAddress = `${donationLink.slice(0, 15)}...${donationLink.slice(-8)}`;
+  const displayAddress = `${donationLink.slice(0, 15)}...${donationLink.slice(
+    -8
+  )}`;
 
   return (
     <div>
-      <button class="button-6" role="button" onClick={handleOpen}>
+      <Button
+        onClick={handleOpen}
+        type="submit"
+        variant="contained"
+        sx={{
+          backgroundColor: "#03EEFF", 
+          color: "#222623", 
+          width: "300px",
+          "&:hover": {
+            backgroundColor: "#222623",
+            color: "#A0F8F8",
+
+            // backgroundColor: "#03EEFF", 
+            // color: "#222623", 
+          },
+        }}
+      >
         Donate Directly
-      </button>
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -58,12 +76,12 @@ const DonateButton = () => {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Heading700>
-
-            Donate Now
-          </Heading700>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-          </Typography>
+          <Heading700>Donate Now</Heading700>
+          <Typography
+            id="modal-modal-title"
+            variant="h6"
+            component="h2"
+          ></Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             Scan the QR code below or copy the link to donate directly:
           </Typography>

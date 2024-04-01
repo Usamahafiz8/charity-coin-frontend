@@ -24,10 +24,12 @@ export const Header = () => {
 
       // Change background color based on scroll position
       const currentSection = Math.floor(currentPosition / window.innerHeight);
-      const colors = ["linear-gradient(to bottom, #222623, #A0F8F8)",
-                     "linear-gradient(to bottom, #222623, #FF5733)",
-                     "linear-gradient(to bottom, #222623, #FFFF00)",
-                     "linear-gradient(to bottom, #222623, #A0F8F8)"];
+      const colors = [
+        "linear-gradient(to bottom, #222623, #A0F8F8)",
+        "linear-gradient(to bottom, #222623, #FF5733)",
+        "linear-gradient(to bottom, #222623, #FFFF00)",
+        "linear-gradient(to bottom, #222623, #A0F8F8)",
+      ];
       setBackgroundColor(colors[currentSection % 4]);
     };
 
@@ -70,11 +72,7 @@ export const Header = () => {
         // background: backgroundColor,
       }}
     >
-      <img
-        src={logoSVG}
-        alt="Logo"
-        style={{ width: "50px", height: "50px" }}
-      />
+      <img src={logoSVG} alt="Logo" style={{ width: "50px", height: "50px" }} />
       <Box
         sx={{
           display: "flex",
@@ -82,14 +80,7 @@ export const Header = () => {
           alignItems: "center",
         }}
       >
-        {/* <Typography
-          variant="body2"
-          style={{
-            color: backgroundColor.includes("A0F8F8") ? "#A0F8F8" : "#222623",
-          }}
-        >
-          Blue to {backgroundColor.includes("A0F8F8") ? "Black" : "Red"}
-        </Typography> */}
+
         <Box
           sx={{
             border: `1px solid ${
@@ -102,12 +93,17 @@ export const Header = () => {
             width: "50px",
             borderRadius: "50%",
           }}
+          href="https://www.gitbook.com/"
         >
-          <DescriptionOutlinedIcon
-            style={{
-              color: backgroundColor.includes("A0F8F8") ? "#A0F8F8" : "#222623",
-            }}
-          />
+          <IconButton>
+            <DescriptionOutlinedIcon
+              style={{
+                color: backgroundColor.includes("A0F8F8")
+                  ? "#A0F8F8"
+                  : "#222623",
+              }}
+            />
+          </IconButton>
         </Box>
       </Box>
     </Box>

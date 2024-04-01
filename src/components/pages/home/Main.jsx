@@ -71,7 +71,6 @@ const Main = () => {
                 Philanthropy:
               </Heading700>
               <Heading700 styles={{ color: "#03EEEF", fontSize: "2.8em" }}>
-                {" "}
                 On-Chain
               </Heading700>
             </div>
