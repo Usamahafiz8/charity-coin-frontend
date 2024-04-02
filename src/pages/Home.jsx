@@ -7,7 +7,7 @@ import DonationPoolStructure from "../components/pages/home/DonationPoolStructur
 import Partners from "../components/partner/Partners";
 import InboundForm from "../components/form/InboundForm";
 import { Box } from "@mui/material";
-import DonateButton from "../components/buttons/DonateButton";
+// import DonateButton from "../components/buttons/DonateButton";
 
 const HomePage = () => {
   return (
@@ -20,7 +20,7 @@ const HomePage = () => {
       <Box
         sx={{ padding: "8px", textAlign: "center", backgroundColor: "#222623" }}
       >
-        <DonateButton />
+{/*         <DonateButton /> */}
       </Box>
       <InboundForm />
     </Layout>
