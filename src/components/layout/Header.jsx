@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import logoSVG from "./../../assets/Charity_Logo.png";
 import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
 import useResponsivePadding from "../reponsive/ResponsibePadding";
+import Link from '@mui/material/Link';
 
 export const Header = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -95,7 +96,7 @@ export const Header = () => {
           }}
           href="https://www.gitbook.com/"
         >
-          <IconButton>
+      <Link to={'https://charity-coin-docs.netlify.app/'}>
             <DescriptionOutlinedIcon
               style={{
                 color: backgroundColor.includes("A0F8F8")
@@ -103,7 +104,7 @@ export const Header = () => {
                   : "#222623",
               }}
             />
-          </IconButton>
+          </Link>
         </Box>
       </Box>
     </Box>
