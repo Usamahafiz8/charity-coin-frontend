@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import logoSVG from "./../../assets/Charity_Logo.png";
 import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
 import useResponsivePadding from "../reponsive/ResponsibePadding";
-import Link from '@mui/material/Link';
 
 export const Header = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -81,7 +80,6 @@ export const Header = () => {
           alignItems: "center",
         }}
       >
-
         <Box
           sx={{
             border: `1px solid ${
@@ -94,9 +92,8 @@ export const Header = () => {
             width: "50px",
             borderRadius: "50%",
           }}
-          href="https://www.gitbook.com/"
         >
-      <Link to={'https://charity-coin-docs.netlify.app/'}>
+          <IconButton href="https://charity-coin-docs.netlify.app">
             <DescriptionOutlinedIcon
               style={{
                 color: backgroundColor.includes("A0F8F8")
@@ -104,7 +101,7 @@ export const Header = () => {
                   : "#222623",
               }}
             />
-          </Link>
+          </IconButton>
         </Box>
       </Box>
     </Box>
