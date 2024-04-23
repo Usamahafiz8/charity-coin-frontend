@@ -1,0 +1,133 @@
+<mxfile host="app.diagrams.net" modified="2024-04-23T14:21:31.667Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36" etag="WEfqMxde7l12TScFnDQp" version="24.2.8" type="github">
+  <diagram name="Page-1" id="GRi979142d2wIKrdt1hW">
+    <mxGraphModel dx="1706" dy="1060" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="PNhASDtAksgzuYLpL6Ag-4" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Charity Coin&lt;/h1&gt;&lt;p&gt;ERC 20 Token&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="20" width="200" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="PNhASDtAksgzuYLpL6Ag-5" value="Charity Coin Token Supply of 1000" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" vertex="1" parent="1">
+          <mxGeometry x="68.75" y="430" width="122.5" height="170" as="geometry" />
+        </mxCell>
+        <mxCell id="PNhASDtAksgzuYLpL6Ag-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="PNhASDtAksgzuYLpL6Ag-6" target="PNhASDtAksgzuYLpL6Ag-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PNhASDtAksgzuYLpL6Ag-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="PNhASDtAksgzuYLpL6Ag-6" target="PNhASDtAksgzuYLpL6Ag-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PNhASDtAksgzuYLpL6Ag-6" value="&lt;b&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;Charity Coin&amp;nbsp;&lt;/font&gt;&lt;/b&gt;" style="ellipse;whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
+          <mxGeometry x="40" y="180" width="180" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="PNhASDtAksgzuYLpL6Ag-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="PNhASDtAksgzuYLpL6Ag-12" target="PNhASDtAksgzuYLpL6Ag-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PNhASDtAksgzuYLpL6Ag-12" value="Transection Feature" style="rounded=1;whiteSpace=wrap;html=1;arcSize=6;" vertex="1" parent="1">
+          <mxGeometry x="240" y="440" width="240" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="PNhASDtAksgzuYLpL6Ag-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="PNhASDtAksgzuYLpL6Ag-13" target="PNhASDtAksgzuYLpL6Ag-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PNhASDtAksgzuYLpL6Ag-13" value="&lt;b&gt;&lt;font style=&quot;font-size: 18px;&quot;&gt;Donation pool&lt;/font&gt;&lt;/b&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=7;" vertex="1" parent="1">
+          <mxGeometry x="710" y="260" width="320" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="PNhASDtAksgzuYLpL6Ag-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="PNhASDtAksgzuYLpL6Ag-19" target="PNhASDtAksgzuYLpL6Ag-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PNhASDtAksgzuYLpL6Ag-47" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="PNhASDtAksgzuYLpL6Ag-19" target="PNhASDtAksgzuYLpL6Ag-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PNhASDtAksgzuYLpL6Ag-19" value="on transection deduct 1% donation fees" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="550" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PNhASDtAksgzuYLpL6Ag-38" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="PNhASDtAksgzuYLpL6Ag-20" target="PNhASDtAksgzuYLpL6Ag-39">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="360" y="780" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PNhASDtAksgzuYLpL6Ag-20" value="Max Tranection amount will be 5% of the total supply." style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="630" width="240" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PNhASDtAksgzuYLpL6Ag-30" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="PNhASDtAksgzuYLpL6Ag-25" target="PNhASDtAksgzuYLpL6Ag-26">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PNhASDtAksgzuYLpL6Ag-25" value="Donated ERC 20 Token" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="605" y="470" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="PNhASDtAksgzuYLpL6Ag-26" value="Distribute the token to multi-signature wallet" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="770" y="520" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="PNhASDtAksgzuYLpL6Ag-27" value="Distribution Pool" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1115" y="400" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="PNhASDtAksgzuYLpL6Ag-39" value="send the donation fees to donation hendling contract&amp;nbsp;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="750" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PNhASDtAksgzuYLpL6Ag-41" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="PNhASDtAksgzuYLpL6Ag-40" target="PNhASDtAksgzuYLpL6Ag-13">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="665" y="405" />
+              <mxPoint x="680" y="405" />
+              <mxPoint x="680" y="320" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PNhASDtAksgzuYLpL6Ag-42" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="PNhASDtAksgzuYLpL6Ag-40" target="PNhASDtAksgzuYLpL6Ag-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PNhASDtAksgzuYLpL6Ag-40" value="hold" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="640" y="410" width="50" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PNhASDtAksgzuYLpL6Ag-43" value="&lt;b&gt;Charity Wallet address&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="650" y="630" width="210" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="PNhASDtAksgzuYLpL6Ag-44" value="&lt;span style=&quot;color: rgb(0, 29, 53); font-family: &amp;quot;Google Sans&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, Arial, sans-serif; background-color: rgb(255, 255, 255);&quot;&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;Feeding America address&lt;/font&gt;&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="PNhASDtAksgzuYLpL6Ag-43">
+          <mxGeometry y="30" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PNhASDtAksgzuYLpL6Ag-45" value="&lt;div style=&quot;line-height: 22px; overflow: hidden; padding-bottom: 4px; transition: transform 200ms cubic-bezier(0.2, 0, 0, 1) 0s; color: rgb(0, 29, 53); font-family: &amp;quot;Google Sans&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, Arial, sans-serif; background-color: rgb(255, 255, 255);&quot; class=&quot;Gur8Ad&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Direct Relief address&lt;/font&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="PNhASDtAksgzuYLpL6Ag-43">
+          <mxGeometry y="60" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PNhASDtAksgzuYLpL6Ag-46" value="&lt;div style=&quot;line-height: 22px; overflow: hidden; padding-bottom: 4px; transition: transform 200ms cubic-bezier(0.2, 0, 0, 1) 0s; color: rgb(0, 29, 53); font-family: &amp;quot;Google Sans&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, Arial, sans-serif; background-color: rgb(255, 255, 255);&quot; class=&quot;Gur8Ad&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;American Heart Association&amp;nbsp;&lt;span style=&quot;background-color: initial; color: rgb(0, 0, 0); font-family: Helvetica;&quot;&gt;address&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="PNhASDtAksgzuYLpL6Ag-43">
+          <mxGeometry y="90" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PNhASDtAksgzuYLpL6Ag-58" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="PNhASDtAksgzuYLpL6Ag-53" target="PNhASDtAksgzuYLpL6Ag-59">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1195" y="700" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PNhASDtAksgzuYLpL6Ag-53" value="&lt;b&gt;Voting Pool for donation&lt;/b&gt;" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="490" width="210" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="PNhASDtAksgzuYLpL6Ag-54" value="&lt;span style=&quot;color: rgb(0, 29, 53); font-family: &amp;quot;Google Sans&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, Arial, sans-serif; background-color: rgb(255, 255, 255);&quot;&gt;&lt;font style=&quot;font-size: 11px;&quot;&gt;Feeding America address&lt;/font&gt;&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="PNhASDtAksgzuYLpL6Ag-53">
+          <mxGeometry y="30" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PNhASDtAksgzuYLpL6Ag-55" value="&lt;div style=&quot;line-height: 22px; overflow: hidden; padding-bottom: 4px; transition: transform 200ms cubic-bezier(0.2, 0, 0, 1) 0s; color: rgb(0, 29, 53); font-family: &amp;quot;Google Sans&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, Arial, sans-serif; background-color: rgb(255, 255, 255);&quot; class=&quot;Gur8Ad&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;Direct Relief address&lt;/font&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="PNhASDtAksgzuYLpL6Ag-53">
+          <mxGeometry y="60" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PNhASDtAksgzuYLpL6Ag-56" value="&lt;div style=&quot;line-height: 22px; overflow: hidden; padding-bottom: 4px; transition: transform 200ms cubic-bezier(0.2, 0, 0, 1) 0s; color: rgb(0, 29, 53); font-family: &amp;quot;Google Sans&amp;quot;, Roboto, &amp;quot;Helvetica Neue&amp;quot;, Arial, sans-serif; background-color: rgb(255, 255, 255);&quot; class=&quot;Gur8Ad&quot;&gt;&lt;font style=&quot;font-size: 12px;&quot;&gt;American Heart Association&amp;nbsp;&lt;span style=&quot;background-color: initial; color: rgb(0, 0, 0); font-family: Helvetica;&quot;&gt;address&lt;/span&gt;&lt;/font&gt;&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="PNhASDtAksgzuYLpL6Ag-53">
+          <mxGeometry y="90" width="210" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="PNhASDtAksgzuYLpL6Ag-57" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="PNhASDtAksgzuYLpL6Ag-27" target="PNhASDtAksgzuYLpL6Ag-53">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="PNhASDtAksgzuYLpL6Ag-65" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="PNhASDtAksgzuYLpL6Ag-59">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1470" y="730" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="PNhASDtAksgzuYLpL6Ag-59" value="Transfer amount of ERC20 token to highly bid token" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1090" y="660" width="210" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PNhASDtAksgzuYLpL6Ag-62" value="Actor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="1450" y="760" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PNhASDtAksgzuYLpL6Ag-63" value="Actor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="1410" y="780" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="PNhASDtAksgzuYLpL6Ag-64" value="Actor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="1490" y="780" width="30" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
